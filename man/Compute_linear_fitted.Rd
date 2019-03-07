@@ -43,10 +43,10 @@ Jimin Lauren Yoo
 \seealso{
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
+\examples{
 X=c(1,2,NA,NA,NA,6,7,8,3,0,4,7,7,5,6,0,2,4,1,4,NA,9,0)
 data=data.frame("ID" = 1:23, "X" = X)
 Compute_linear_fitted(data, "X", bin_size=1)
-
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

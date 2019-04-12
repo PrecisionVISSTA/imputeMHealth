@@ -16,6 +16,18 @@ Heatmap_function <- function(variable_vector, plot_title){
   heatmap_dat[heatmap_dat == 0] <- NA
   #Draw heatmap
   my_palette <- colorRampPalette(c("light blue", "dark blue"))(n = 299)
-  heatmap(heatmap_dat, Rowv=NA, Colv=NA, col=my_palette, srtCol=45, main=plot_title)
+  heatmap(heatmap_dat, Rowv=NA, Colv=NA, col=my_palette, main=plot_title)
+}
+
+###########################################################################
+###Fucntion--Percent of Ourliters###
+###########################################################################
+# Input: a column in data
+# Output: returns the percentage of statistically calculated (outside of 1.5*IQR) outliers
+
+outliers_percent <- function(x){
+  qnt <- quantile(x, probs=c(.25, .75), na.rm = T)
+  H <- 1.5 * IQR(x, na.rm = T)
+  length(which(x < (qnt[1] - H)| x > (qnt[2] + H))) / length(x)
 }
 

@@ -9,7 +9,12 @@ Get_adjacent_values_past=function(variable_vector,index, bin_size){
       cnt=cnt+1
     }
   }
+  if (j > length(variable_vector)){
+    stop("The index is out of range")
+  }
+  
   if (length(adjacent_values)<bin_size){
+    warning('There is not enough past, non-missing values. Returned value is the mean of all values in the variable vector')
     mean_seq=rep(mean(variable_vector, na.rm=TRUE), bin_size-length(adjacent_values))
     adjacent_values=append(adjacent_values, mean_seq)
   }
@@ -26,7 +31,12 @@ Get_adjacent_values_future=function(variable_vector,index, bin_size){
       cnt=cnt+1
     }
   }
+  if (j > length(variable_vector)){
+    stop("The index is out of range")
+  }
+  
   if (length(adjacent_values)<bin_size){
+    warning('There is not enough future, non-missing values. Returned value is the mean of all values in the variable vector')
     mean_seq=rep(mean(variable_vector, na.rm=TRUE), bin_size-length(adjacent_values))
     adjacent_values=append(adjacent_values, mean_seq)
   }
@@ -47,7 +57,13 @@ Get_DoW_values_past=function(variable_vector,index, bin_size){
       cnt=cnt+1
     }
   }
+  
+  if (j > length(variable_vector)){
+    stop("The index is out of range")
+  }
+  
   if (length(dow_values)<bin_size){
+    warning('There is not enough past, non-missing values. Returned value is the mean of all values in the variable vector')
     mean_seq=rep(mean(variable_vector, na.rm=TRUE), bin_size-length(dow_values))
     dow_values=append(dow_values, mean_seq)
   }
@@ -65,7 +81,13 @@ Get_DoW_values_future=function(variable_vector,index, bin_size){
       cnt=cnt+1
     }
   }
+  
+  if (j > length(variable_vector)){
+    stop("The index is out of range")
+  }
+  
   if (length(dow_values) < bin_size){
+    warning('There is not enough future, non-missing values. Returned value is the mean of all values in the variable vector')
     mean_seq=rep(mean(variable_vector, na.rm=TRUE), bin_size-length(dow_values))
     dow_values=append(dow_values, mean_seq)
   }

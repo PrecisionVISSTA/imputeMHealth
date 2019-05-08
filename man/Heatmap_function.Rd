@@ -13,6 +13,7 @@ Heatmap_function(variable_vector, plot_title)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{variable_vector}{Variable, in vector format, that we want to draw heatmap of weekly pattern}
+  \item{date_vector}{Date variable in POSIXct format. Needs to be of the same length as the variable vector}
   \item{plot_title}{Title of the plot}
 }
 \details{

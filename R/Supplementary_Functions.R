@@ -1,16 +1,19 @@
 ###########################################################################
 ###Heatmap function###
 ###########################################################################
-# Input: a column in data
+# Input: A health variable, date variable in POSIXct format, plot_title
 # Output: returns a heatmap with x-axis as week number and y-axis as day of week
-Heatmap_function <- function(variable_vector, plot_title){
+Heatmap_function <- function(variable_vector, date_vector,plot_title){
+  #Index of first Monday
+  first_Monday_index=head(which(wday(date_vector)==1), n=1)
+  last_Sunday_index=tail(which(wday(date_vector)==7), n=1)
   #keep nrow as multiple of 7
-  mod7= length(variable_vector)%%7
-  end=length(variable_vector)-mod7
+  #mod7= length(variable_vector)%%7
+  #end=length(variable_vector)-mod7
   #Convert dataframe into matrix
-  heatmap_dat=matrix(variable_vector[0:end], nrow=7)
+  heatmap_dat=matrix(variable_vector[first_Monday_index:last_Sunday_index], nrow=7)
   #Set row names as Day of Week
-  row.names(heatmap_dat) = c("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+  row.names(heatmap_dat) = c("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
   heatmap_dat <- heatmap_dat[nrow(heatmap_dat):1, ]
   #Convert zeros to NAs
   heatmap_dat[heatmap_dat == 0] <- NA

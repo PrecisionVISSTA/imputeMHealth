@@ -4,8 +4,7 @@ Title: A package to impute missing values in mobile health data
 Version: 0.1.0
 Author: Jimin Lauren Yoo
 Maintainer: Jimin Lauren Yoo <jmybhm1109@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: This package contains three functions that compute missing data from a vector. 1)Averaging the past and future adjacent values 2)Averaging the past and future, same-day-of-week values 3)Predict from a linear model 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

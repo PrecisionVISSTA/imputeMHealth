@@ -41,21 +41,25 @@ Compute_DoW_average <- function(data, var_name, bin_past=0, bin_future=0){
 
 
 Compute_linear_fitted <- function(data, var_name, bin_size){
-
+    #initialize lm data frame
   lm_df=data.frame(matrix(0, ncol = bin_size*4, nrow = nrow(data)))
   lm_df$var_to_impute=data[,var_name]
-
+  
+  #Iterate through missing index
   missing_index=which(is.na(lm_df$var_to_impute))
   for (i in 1:nrow(lm_df)){
-    #print('missing index:');print(missing_index)
+    #"Grab" equal number of past and future adjacent values
     Adjacent_values=append(Get_adjacent_values_past(lm_df$var_to_impute, i, bin_size), Get_adjacent_values_future(lm_df$var_to_impute, i, bin_size))
+    #Grab equal number of past and future same-day-of-week values
     DoW_values=append(Get_DoW_values_past(lm_df$var_to_impute, i, bin_size), Get_DoW_values_future(lm_df$var_to_impute, i, bin_size))
+    #Fill lm data frame with adjacent and DoW values
     lm_df[i,1:(bin_size*4)]=c(Adjacent_values, DoW_values)
   }
-
+  #Train linear model using non-missing data--Outcome: variable to impute
   Missing_df=lm_df[missing_index,]
   Nonmissing_df=lm_df[-missing_index,]
   lmMod <- lm(var_to_impute ~ ., data=Nonmissing_df)  # build the model
+  #Use the trained model to predict missing data
   Pred <- predict(lmMod, Missing_df)
 
   lm_df$var_to_impute[missing_index]=Pred

@@ -1,7 +1,6 @@
 #Get adjacent values
 Get_adjacent_values_past=function(variable_vector,index, bin_size){
   adjacent_values = numeric();cnt=0;j=index
-  # if(index < bin_size){print("index is smaller than the bin size"); break}
   while(cnt<bin_size && j>1){
     j=j-1
     if(!is.na(variable_vector[j])){
@@ -14,7 +13,7 @@ Get_adjacent_values_past=function(variable_vector,index, bin_size){
   }
   
   if (length(adjacent_values)<bin_size){
-    warning('There is not enough past, non-missing values. Returned value is the mean of all values in the variable vector')
+    warning('There are not enough past, non-missing values. Additional values are filled using the mean of all values in the variable column')
     mean_seq=rep(mean(variable_vector, na.rm=TRUE), bin_size-length(adjacent_values))
     adjacent_values=append(adjacent_values, mean_seq)
   }
@@ -22,8 +21,7 @@ Get_adjacent_values_past=function(variable_vector,index, bin_size){
 }
 
 Get_adjacent_values_future=function(variable_vector,index, bin_size){
-  adjacent_values = numeric();cnt=0;j=index #j=11
-  # if(index < bin_size){print("index is smaller than the bin size"); break}
+  adjacent_values = numeric();cnt=0;j=index
   while(cnt<bin_size && j<length(variable_vector)){
     j=j+1
     if(!is.na(variable_vector[j])){
@@ -48,8 +46,7 @@ Get_adjacent_values_future=function(variable_vector,index, bin_size){
 #######Output adjacent, same day of week values######
 Get_DoW_values_past=function(variable_vector,index, bin_size){
   dow_values = numeric();cnt=0;j=index
-  #Try to avoid where j < 0
-  #if(index < bin_size*2*7){print("index is smaller than the bin size"); dow_values=rep(NA,bin_size)}
+
   while(cnt<bin_size && j>7){
     j=j-7
     if(!is.na(variable_vector[j])){
@@ -57,7 +54,7 @@ Get_DoW_values_past=function(variable_vector,index, bin_size){
       cnt=cnt+1
     }
   }
-  
+  #Try to avoid where j < 0
   if (j > length(variable_vector)){
     stop("The index is out of range")
   }
@@ -73,7 +70,6 @@ Get_DoW_values_past=function(variable_vector,index, bin_size){
 Get_DoW_values_future=function(variable_vector,index, bin_size){
   dow_values = numeric();cnt=0;j=index
   #Try to avoid where j < 0
-  #if(index < bin_size*2*7){print("index is smaller than the bin size"); dow_values=rep(NA,bin_size)}
   while(cnt<bin_size && j<=length(variable_vector)-7){
     j=j+7
     if(!is.na(variable_vector[j])){

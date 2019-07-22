@@ -8,5 +8,6 @@ export(Get_DoW_values_past)
 export(Get_DoW_values_future)
 export(Heatmap_function)
 export(outliers_percent)
-importFrom(grDevices,colorRampPalette,lubridate,stats,heatmap,lm,predict)
+importFrom(grDevices)
+importFrom(colorRampPalette,lubridate,stats,heatmap,lm,predict)
 

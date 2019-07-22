@@ -12,7 +12,6 @@ importFrom(grDevices)
 importFrom("RColorBrewer")
 importFrom("lubridate")
 importFrom("stats")
-importFrom("heatmap")
 importFrom("lm")
 importFrom("predict")
 

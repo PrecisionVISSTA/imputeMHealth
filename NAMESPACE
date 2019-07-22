@@ -9,5 +9,5 @@ export(Get_DoW_values_future)
 export(Heatmap_function)
 export(outliers_percent)
 importFrom(grDevices)
-importFrom(RColorBrewer,lubridate,stats,heatmap,lm,predict)
+importFrom("RColorBrewer","lubridate","stats","heatmap","lm","predict")
 

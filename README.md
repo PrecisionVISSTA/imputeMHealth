@@ -2,7 +2,7 @@ This imputation R package for mHealth data was developed by Lauren Yoo, Kimberly
 
 STEPS
 
-Install the imputeMHealth package by following codes:
+Install the imputeMHealth package by following:
 
 install.packages("devtools")
 library(devtools)

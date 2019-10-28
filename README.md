@@ -1,5 +1,7 @@
 This imputation R package for mHealth data was developed by Lauren Yoo, Kimberly Glass, and Arlene Chung through funding from the NIH NIBIB and Office of the Director as part of NIH Grant Number 5R01EB025024.
 
+Contact information: qubbdR01@gmail.com 
+
 STEPS
 
 Install the imputeMHealth package by following:

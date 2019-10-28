@@ -11,6 +11,7 @@ library(devtools)
 install_github("jmybhm/imputeMHealth", force = TRUE)
 
 Code Details
+
 *Expected data format: matrix format, where each row is a person+brand, and each column is a date. Each row and column is unique.
 
 *Missing values should be NA, not numbers like 9999, 0, or -1.
